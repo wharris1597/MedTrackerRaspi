@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MedTracker</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" />
+    <style>
+
+        .pageheader{
+            color: #b3b3b3;
+            font-weight: 300;
+
+        }
+        .button{
+            text-align: center;
+            margin:auto;
+            margin-top: 100px;
+            width: 200px;
+        }
+        .timeinfo{
+            margin:auto;
+            width: 200px;
+            color: white;
+            font-size: 12px;
+
+        }
+
+    </style>
+</head>
+<body style="background-color: #333333; font-family: 'Open Sans'" >
+<div id="pageheader" class="pageheader"><span style="font-weight: 800">MedTracker</span> by  <span style="font-weight: 600"><a href="https://williamharris.dev" style="text-decoration: none; color: #b3b3b3">William Harris</a></span></div>
+<div id="button" class="button"><button id="take-meds" class=button style="height: 75px; background-color: #29ABE2; border-radius: 12px; border:none; color:#ffffff"  onclick="trackMeds()">I TOOK MY MEDS</button></div>
+<br>
+<div id="timeinfo" class="timeinfo">Time Last Taken:<br>
+    Time Elapsed: </div>
+</body>
+</html>
