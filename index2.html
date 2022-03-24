@@ -2,31 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>MedTracker</title>
     <meta content='width=device-width, initial-scale=1' name='viewport'/>
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" />
-    <style>
-
-        .pageheader{
-            color: #b3b3b3;
-            font-weight: 300;
-
-        }
-        .button{
-            text-align: center;
-            margin:auto;
-            margin-top: 100px;
-            width: 200px;
-        }
-        .timeinfo{
-            margin:auto;
-            width: 200px;
-            color: white;
-            font-size: 12px;
-
-        }
-
-    </style>
+    <title>Title</title>
     <script>
         //create cookie
         function setCookie(cname, cvalue, exdays) {
@@ -67,25 +44,44 @@
         function trackMeds(){
             let d = new Date();
 
-            setCookie("timetaken",d.toLocaleDateString(),30);
+            setCookie("timetaken","Last Time Taken: "+d.toLocaleDateString()+" at "+d.toLocaleTimeString(),30);
             setCookie("timetakenInt",d.getTime(),30);
             checkLast();
             location.reload();
         }
         function checkLast(){
-            document.getElementById("last_time").innerHTML = "Time Last Taken: " + getCookie("timetaken");
+            document.getElementById("last_time").innerHTML = getCookie("timetaken");
         }
     </script>
-</head>
-<body style="background-image: url('bubbles.png');background-position: center center; background-repeat: no-repeat;
-            background-attachment: fixed;
-            background-size: cover;
-            background-color: #333333; font-family: 'Open Sans'" >
-<div id="pageheader" class="pageheader"><span style="font-weight: 800">MedTracker</span> by  <span style="font-weight: 600"><a href="https://williamharris.dev" style="text-decoration: none; color: #b3b3b3">William Harris</a></span></div>
-<div id="button" class="button"><button id="take-meds" class=button style="height: 75px; background-color: #29ABE2; border-radius: 12px; border:none; color:#ffffff;"  onclick="trackMeds()">I TOOK MY MEDS</button></div>
-<br>
-<div id="timeinfo" class="timeinfo">
+    <style>
+    .DisplayTime {
+        border: 5px outset red;
+        padding:10px;
+        margin-top: 15%;
+        margin-left: 25%;
+        margin-right: 25%;
 
+
+
+    }
+    </style>
+</head>
+<body style="text-align: center; background-color: antiquewhite">
+<div>
+    <h1 style="color: blue">
+        MedTracker
+    </h1>
+</div>
+
+<div class=DisplayTime>
+    <button id="take-meds" style="width:50%; height: 100px; background-color: cornsilk;"  onclick="trackMeds()">I TOOK MY MEDS</button>
+
+    <div  id="last_time">
+
+    </div>
+    <br>
+    Time Since Last Taken:
+    <p id="demo2" > </p>
 
     <script>
         // Set the date we're counting down to
@@ -108,13 +104,33 @@
             var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
             // Display the result in the element with id="demo"
-            document.getElementById("demo2").innerHTML =  "Time Elapsed: "+days + "d " + hours + "h "
+            document.getElementById("demo2").innerHTML =  days + "d " + hours + "h "
                 + minutes + "m ";
+
+            // If the count down is finished, write some text
+            if (hours > 20) {
+                document.getElementById("demo3").innerHTML = "Time To Take Your Medicine!";
+            }
+            if (hours < 18) {
+                document.getElementById("demo3").innerHTML = "You've Already Taken Your Medicine!";
+            }
 
         }, 1000);
     </script>
-    <p id="last_time"><script>checkLast();</script></p>
-    <p id="demo2"></p>
+
+
+</div>
+
+<p id="demo3" ></p>
+
+
+
+
+
+<div>
+    <script>
+        checkLast();
+    </script>
 </div>
 
 
